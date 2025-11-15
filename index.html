@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="fr">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recherche Avancée & Page Noire</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100%;
+      overflow-x: hidden;
+      position: relative;
+      color: #ffffff;
+    }
+
+    /* ============================
+       SECTION 1 : PAGE BLANCHE (premier code)
+       ============================ */
+
+    .geometric-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .geometric-shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 15s infinite linear;
+    }
+
+    .rectangle {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      border-radius: 5px;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      background: transparent;
+    }
+
+    .triangle-1 {
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 50px solid #667eea;
+    }
+
+    .triangle-2 {
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 60px solid #764ba2;
+    }
+
+    .triangle-3 {
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 40px solid #f093fb;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+      }
+    }
+
+    .shape-1 { left: 10%; animation-delay: 0s; animation-duration: 20s; }
+    .shape-2 { left: 20%; animation-delay: 2s; animation-duration: 18s; }
+    .shape-3 { left: 30%; animation-delay: 4s; animation-duration: 22s; }
+    .shape-4 { left: 40%; animation-delay: 1s; animation-duration: 19s; }
+    .shape-5 { left: 50%; animation-delay: 3s; animation-duration: 21s; }
+    .shape-6 { left: 60%; animation-delay: 5s; animation-duration: 17s; }
+    .shape-7 { left: 70%; animation-delay: 2.5s; animation-duration: 23s; }
+    .shape-8 { left: 80%; animation-delay: 4.5s; animation-duration: 16s; }
+    .shape-9 { left: 90%; animation-delay: 1.5s; animation-duration: 24s; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-title {
+      text-align: center;
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #000000;
+    }
+
+    .bandeau {
+      width: 100%;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+      color: #000;
+    }
+
+    .intro-section {
+      text-align: center;
+      padding: 8rem 2rem;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .intro-section h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .intro-section p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .scroll-button {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .scroll-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* ============================
+       SECTION 2 : PAGE NOIRE (Canva)
+       ============================ */
+
+    .section-black {
+      background-color: #000000;
+      color: #ffffff;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 5rem;
+    }
+
+    .section-black .container {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-title {
+        font-size: 2.5rem;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+ </head>
+ <body>
+
+  <!-- ============================
+       PAGE BLANCHE ORIGINALE
+       ============================ -->
+  <div class="geometric-background">
+    <div class="geometric-shape rectangle shape-1" style="width: 60px; height: 60px;"></div>
+    <div class="geometric-shape triangle triangle-1 shape-2"></div>
+    <div class="geometric-shape rectangle shape-3" style="width: 40px; height: 80px;"></div>
+    <div class="geometric-shape triangle triangle-2 shape-4"></div>
+    <div class="geometric-shape rectangle shape-5" style="width: 50px; height: 50px;"></div>
+    <div class="geometric-shape triangle triangle-3 shape-6"></div>
+    <div class="geometric-shape rectangle shape-7" style="width: 70px; height: 45px;"></div>
+    <div class="geometric-shape triangle triangle-1 shape-8"></div>
+    <div class="geometric-shape rectangle shape-9" style="width: 35px; height: 70px;"></div>
+  </div>
+
+  <div class="bandeau">🔷 Plateforme de Recherche Avancée 🔷</div>
+
+  <section class="intro-section">
+    <h1>Bienvenue sur la recherche avancée</h1>
+    <p>Découvrez et explorez des profils, des compétences et des expériences grâce à notre outil complet.</p>
+    <button class="scroll-button" onclick="document.getElementById('page-noire').scrollIntoView({behavior: 'smooth'})">
+      ↓ Accéder à la recherche avancée
+    </button>
+  </section>
+
+  <!-- ============================
+       PAGE NOIRE (intégration Canva)
+       ============================ -->
+  <section class="section-black" id="page-noire">
+    <main class="container">
+      <h1 class="main-title" id="mainTitle" style="color:white;">Recherche Avancée</h1>
+      <div class="content-grid">
+        <div class="profile-card" style="background:linear-gradient(135deg,rgba(26,26,26,0.7),rgba(45,45,45,0.7));backdrop-filter:blur(10px);border-radius:20px;padding:2.5rem;box-shadow:0 10px 30px rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);">
+          <div class="profile-header" style="text-align:center;margin-bottom:2rem;">
+            <div class="profile-avatar" style="width:120px;height:120px;border-radius:50%;background:linear-gradient(45deg,#667eea,#764ba2);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:bold;">MD</div>
+            <div class="profile-name" id="profileName" style="font-size:1.8rem;font-weight:bold;margin-bottom:0.5rem;">Marie Dubois</div>
+            <div class="profile-profession" id="profileProfession" style="color:#888;font-size:1.1rem;margin-bottom:1.5rem;">Développeuse Web</div>
+          </div>
+          <div class="profile-details" style="display:grid;gap:1rem;">
+            <div class="detail-item" style="display:flex;align-items:center;padding:0.8rem;background:rgba(255,255,255,0.05);border-radius:10px;border-left:3px solid #667eea;"><span class="detail-icon">📧</span><span id="profileEmail">marie.dubois@email.com</span></div>
+            <div class="detail-item" style="display:flex;align-items:center;padding:0.8rem;background:rgba(255,255,255,0.05);border-radius:10px;border-left:3px solid #667eea;"><span class="detail-icon">📱</span><span>+33 6 12 34 56 78</span></div>
+            <div class="detail-item" style="display:flex;align-items:center;padding:0.8rem;background:rgba(255,255,255,0.05);border-radius:10px;border-left:3px solid #667eea;"><span class="detail-icon">📍</span><span>Paris, France</span></div>
+            <div class="detail-item" style="display:flex;align-items:center;padding:0.8rem;background:rgba(255,255,255,0.05);border-radius:10px;border-left:3px solid #667eea;"><span class="detail-icon">💼</span><span>5 ans d'expérience</span></div>
+            <div class="detail-item" style="display:flex;align-items:center;padding:0.8rem;background:rgba(255,255,255,0.05);border-radius:10px;border-left:3px solid #667eea;"><span class="detail-icon">🎓</span><span>Master Informatique</span></div>
+          </div>
+          <div class="tags" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;">
+            <span class="tag" style="background:rgba(102,126,234,0.2);color:#667eea;padding:0.3rem 0.8rem;border-radius:15px;font-size:0.9rem;border:1px solid #667eea;">JavaScript</span>
+            <span class="tag" style="background:rgba(102,126,234,0.2);color:#667eea;padding:0.3rem 0.8rem;border-radius:15px;font-size:0.9rem;border:1px solid #667eea;">React</span>
+            <span class="tag" style="background:rgba(102,126,234,0.2);color:#667eea;padding:0.3rem 0.8rem;border-radius:15px;font-size:0.9rem;border:1px solid #667eea;">Node.js</span>
+            <span class="tag" style="background:rgba(102,126,234,0.2);color:#667eea;padding:0.3rem 0.8rem;border-radius:15px;font-size:0.9rem;border:1px solid #667eea;">CSS</span>
+          </div>
+          <div class="section-description" style="margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,rgba(102,126,234,0.2),rgba(118,75,162,0.2));border-radius:15px;text-align:center;font-style:italic;">Une recherche précise et structurée, permettant de trouver rapidement ce que vous cherchez sans ambiguïté.</div>
+        </div>
+
+        <div class="search-card" style="background:linear-gradient(135deg,rgba(45,45,45,0.7),rgba(26,26,26,0.7));backdrop-filter:blur(10px);border-radius:20px;padding:2.5rem;box-shadow:0 10px 30px rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);">
+          <h2 class="search-title" id="searchTitle" style="font-size:1.8rem;font-weight:bold;margin-bottom:2rem;text-align:center;">Rechercher des profils</h2>
+          <form id="searchForm">
+            <div class="filter-group"><label class="filter-label" for="profession">Profession</label>
+              <select class="filter-select" id="profession">
+                <option value="">Toutes les professions</option>
+                <option value="developpeur">Développeur</option>
+                <option value="designer">Designer</option>
+                <option value="marketing">Marketing</option>
+                <option value="commercial">Commercial</option>
+                <option value="rh">Ressources Humaines</option>
+              </select>
+            </div>
+            <div class="filter-group"><label class="filter-label" for="location">Lieu</label>
+              <select class="filter-select" id="location">
+                <option value="">Tous les lieux</option>
+                <option value="paris">Paris</option>
+                <option value="lyon">Lyon</option>
+                <option value="marseille">Marseille</option>
+                <option value="toulouse">Toulouse</option>
+                <option value="remote">Télétravail</option>
+              </select>
+            </div>
+            <div class="filter-group"><label class="filter-label" for="experience">Expérience</label>
+              <select class="filter-select" id="experience">
+                <option value="">Toute expérience</option>
+                <option value="junior">Junior (0–2 ans)</option>
+                <option value="intermediate">Intermédiaire (3–5 ans)</option>
+                <option value="senior">Senior (5+ ans)</option>
+              </select>
+            </div>
+            <div class="filter-group"><label class="filter-label" for="skills">Compétences</label>
+              <input type="text" class="filter-input" id="skills" placeholder="JavaScript, React, Python...">
+            </div>
+            <button type="submit" class="search-button">🔍 Lancer la recherche</button>
+          </form>
+          <div class="section-description" style="margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,rgba(102,126,234,0.2),rgba(118,75,162,0.2));border-radius:15px;text-align:center;font-style:italic;">Une recherche précise et structurée, permettant de trouver rapidement ce que vous cherchez sans ambiguïté.</div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <script>
+    // Animation du bouton de recherche
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const button = document.querySelector('.search-button');
+      button.textContent = '🔄 Recherche en cours...';
+      button.style.background = 'linear-gradient(45deg, #555, #777)';
+      setTimeout(() => {
+        button.textContent = '✅ Recherche terminée !';
+        button.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+        setTimeout(() => {
+          button.textContent = '🔍 Lancer la recherche';
+          button.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+        }, 2000);
+      }, 1500);
+    });
+  </script>
+ </body>
+</html>
